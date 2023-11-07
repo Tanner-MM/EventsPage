@@ -1,0 +1,44 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;  
+    margin: 0 auto;
+    background-color: purple;
+    padding: 10px;
+}
+
+.item {
+    /* Styling for the individual items, for demonstration purposes */
+    background-color: lightgray;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+
+
+
+
+  @media screen and (min-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+    @media screen and (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+  } 

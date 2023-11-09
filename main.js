@@ -56,8 +56,8 @@ class EventCard extends HTMLElement {
                 </a>
             </div>
             <div style="--area:date; background-color: #3b75a3; color:#d3e0ea;" class="center-content">${days}</div>
-            <div style="--area:learn;" class="center-content">
-                <a href="${event.url}" style="color: var(--sponsor-color)" target="_blank">Learn More</a>
+            <div style="--area:learn; border: 1px solid #ECF1F5;" class="center-content">
+                <a href="${event.url}" style="color: var(--sponsor-color);" target="_blank">Learn More</a>
             </div>
             <div style="--area:title; justify-content:start;" class="center-content">
                 <h3 class="event-content-title">${event.event}</h3>

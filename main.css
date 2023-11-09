@@ -1,44 +1,101 @@
-.grid {
+:root {
+    --sponsor-color: #f26422;
+    --location-color: #3b75a3;
+}
+
+#event-container-grid {
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    grid-gap: 10px;  
+    grid-gap: 12px;  
     margin: 0 auto;
     background-color: purple;
+    box-sizing: border-box;
     padding: 10px;
+    max-width: 1280px;
 }
 
 .item {
-    /* Styling for the individual items, for demonstration purposes */
-    background-color: lightgray;
-    padding: 20px;
+    background-color: #ffffff;
+    padding: 10px;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 1px solid #ECF1F5;
   }
 
-
-
-
-  @media screen and (min-width: 1200px) {
-    .grid {
-        grid-template-columns: repeat(5, 1fr);
+  .event-image {
+    max-width: 100%;
+  }
+  
+  .star-icon {
+    fill: var(--sponsor-color);
     }
+.sponsor-text {
+    color: var(--sponsor-color);
+    font-size: small;
+    margin-left: 4px;
+  }
+
+ .flag-icon {
+    fill: var(--location-color);
+}
+.location-text {
+    color: var(--location-color);
+    font-size: small;
+    margin-left: 4px;
+
+ }
+
+ .event-title {
+    color: #222222;
+    font-family: Verdana;
+    font-size: medium;
+    justify-content: start;
+    --area:title;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+ }
+
+ event-card {
+    display: grid;
+    grid-template-areas: 
+      "image image"
+      "date learn"
+      "title title"
+      "location location"
+      "sponsor sponsor";
+    grid-gap: 8px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 16px;
+    max-width: 300px;
+    grid-template-rows: auto 3em 3em 3em 3em;
+  }
+  event-card > div {
+    grid-area: var(--area);
+  }
+  .center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   @media screen and (max-width: 900px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
+    #event-container-grid {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 70%;
     }
   }
-
-
+  
   @media screen and (max-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
+    #event-container-grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 70%;
     }
   }
-
-    @media screen and (max-width: 480px) {
-    .grid {
-        grid-template-columns: repeat(1, 1fr);
+  
+  @media screen and (max-width: 480px) {
+    #event-container-grid {
+      grid-template-columns: repeat(1, 1fr);
+      max-width: 90%; /* You can adjust the max-width for smaller screens */
     }
-  } 
+  }

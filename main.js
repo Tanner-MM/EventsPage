@@ -1,4 +1,5 @@
 let data = null;
+const defaultImageSVG = '<svg style="display:none;" xmlns="http://www.w3.org/2000/svg" width="275" height="200" viewBox="0 0 275 200" fill="none"><rect width="275" height="200" fill="#D9D9D9"/></svg>';
 
 async function parseCSV() {
     try {
@@ -15,16 +16,14 @@ async function parseCSV() {
 function addEventCards() {
     const gridWrapper = document.getElementById('event-container-grid');
 
-    let count = 0;
-
     // Data source is in order from oldest to newest, so looping from back orders them from newest to oldest naturally.
     for (let i = data.length - 1; i >= 0; i--) {
         const obj = data[i];
-            const newCard = document.createElement('event-card');
-            newCard.data = obj;
-            gridWrapper.appendChild(newCard);
+        const newCard = document.createElement('event-card');
+        newCard.data = obj;
+        gridWrapper.appendChild(newCard);
     }
-    
+
 };
 
 class EventCard extends HTMLElement {
@@ -32,10 +31,11 @@ class EventCard extends HTMLElement {
         super();
         this._data = {};
     };
-    
+
     set data(obj) {
         this._data = obj;
         this.render();
+
     };
 
     get data() {
@@ -47,16 +47,16 @@ class EventCard extends HTMLElement {
         let days = this.formatDate(event);
 
 
-        // TODO finish fixing text styling areas
         this.innerHTML = `
             <div style="--area:image" class="event-image-container" title="View Enlarged Image">
                 <a data-fancybox="gallery" href="${event.image}" data-caption="${event.event} - ${event.track}">
                     <img class="event-image" src="${event.image}" alt="Image Not Available">
+                    ${defaultImageSVG}
                     <i class="fa-solid fa-maximize image-enlarge-icon"></i>
                 </a>
             </div>
             <div style="--area:date; background-color: #3b75a3; color:#d3e0ea;" class="center-content">${days}</div>
-            <div style="--area:learn; border: 1px solid #ECF1F5;" class="center-content">
+            <div style="--area:learn;" class="center-content">
                 <a href="${event.url}" style="color: var(--sponsor-color);" target="_blank">Learn More</a>
             </div>
             <div style="--area:title; justify-content:start;" class="center-content">
@@ -71,6 +71,7 @@ class EventCard extends HTMLElement {
                 <span class="sponsor-text">Sponsored by ${event.sponsor}</span>
             </div>
       `;
+
     };
 
 
@@ -82,36 +83,36 @@ class EventCard extends HTMLElement {
 
         const months = Object.keys(monthAbbreviations);
         let formattedDate;
-        
+
         if (typeof event.days === 'number') {
-          formattedDate = `${monthAbbreviations[event.month]} ${String(event.days).padStart(2, '0')}`;
+            formattedDate = `${monthAbbreviations[event.month]} ${String(event.days).padStart(2, '0')}`;
         } else if (typeof event.days === 'string') {
-          const dayRanges = event.days.split(',').map(day => day.trim());
-          const startDay = dayRanges[0];
-          const endDay = dayRanges[dayRanges.length - 1];
-      
-          let startMonthAbbreviation = monthAbbreviations[event.month];
-          let endMonthAbbreviation = startMonthAbbreviation;
-          let endMonthName = event.month;
-      
-          if (parseInt(endDay, 10) < parseInt(startDay, 10)) {
-            // Find the index of the current month
-            const currentMonthIndex = months.indexOf(event.month);
-            // Determine the index of the next month, wrapping around to 0 (January) if necessary
-            const nextMonthIndex = (currentMonthIndex + 1) % 12;
-            endMonthName = months[nextMonthIndex];
-            endMonthAbbreviation = monthAbbreviations[endMonthName];
-          }
-      
-          formattedDate = dayRanges.length === 1 ?
-            `${startMonthAbbreviation} ${startDay.padStart(2, '0')}` :
-            `${startMonthAbbreviation} ${startDay.padStart(2, '0')} - ${endMonthAbbreviation} ${endDay.padStart(2, '0')}`;
+            const dayRanges = event.days.split(',').map(day => day.trim());
+            const startDay = dayRanges[0];
+            const endDay = dayRanges[dayRanges.length - 1];
+
+            let startMonthAbbreviation = monthAbbreviations[event.month];
+            let endMonthAbbreviation = startMonthAbbreviation;
+            let endMonthName = event.month;
+
+            if (parseInt(endDay, 10) < parseInt(startDay, 10)) {
+                // Find the index of the current month
+                const currentMonthIndex = months.indexOf(event.month);
+                // Determine the index of the next month, wrapping around to 0 (January) if necessary
+                const nextMonthIndex = (currentMonthIndex + 1) % 12;
+                endMonthName = months[nextMonthIndex];
+                endMonthAbbreviation = monthAbbreviations[endMonthName];
+            }
+
+            formattedDate = dayRanges.length === 1 ?
+                `${startMonthAbbreviation} ${startDay.padStart(2, '0')}` :
+                `${startMonthAbbreviation} ${startDay.padStart(2, '0')} - ${endMonthAbbreviation} ${endDay.padStart(2, '0')}`;
         } else {
-          formattedDate = '';
+            formattedDate = '';
         }
-      
+
         return formattedDate;
-      }
+    }
 };
 
 customElements.define('event-card', EventCard);
@@ -119,6 +120,18 @@ customElements.define('event-card', EventCard);
 async function main() {
     await parseCSV();
     addEventCards();
+
+    const allImages = document.querySelectorAll('.event-image');
+    allImages.forEach(img => {
+        img.addEventListener('error', function () {
+            this.style.display = 'none'; // Hide the img
+
+            const svgElement = this.nextElementSibling;
+            if (svgElement && svgElement.tagName === 'svg') {
+                svgElement.style.display = 'block';
+            }
+        });
+    });
 };
 
 main();

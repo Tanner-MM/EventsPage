@@ -1,17 +1,30 @@
 :root {
     --sponsor-color: #f26422;
     --location-color: #3b75a3;
+    --event-page-font-family: Verdana;
+}
+
+.content-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 #event-container-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 12px;
-    margin: 50px auto;
+    margin: 0 auto;
     background-color: #ffffff;
     box-sizing: border-box;
     padding: 10px;
     max-width: 1280px;
+}
+
+.event-page-context {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    max-width: 990px;
 }
 
 .event-image {
@@ -29,6 +42,16 @@
     justify-content: center;
     position: relative;
     align-items: start;
+}
+
+.event-page-title {
+    color: #222222;
+    font-family: var(--event-page-font-family);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    padding-left: 10px;
 }
 
 .star-icon { color: var(--sponsor-color); }
@@ -73,7 +96,7 @@ event-card {
     border: 1px solid #ECF1F5;
     padding: 13px;
     max-width: 300px;
-    grid-template-rows: auto 30px auto 1.5em 1.5em;
+    grid-template-rows: 200px 30px 58px 1.5em 1.5em;
     grid-row-gap: 2px;
     padding-bottom: 40px;
 }
@@ -95,7 +118,7 @@ event-card>div { grid-area: var(--area); }
 .event-content-title {
     max-width: 250px;
     color: #222222;
-    font-family: Verdana;
+    font-family: var(--event-page-font-family);
     font-size: medium;
     justify-content: start;
     font-style: normal;

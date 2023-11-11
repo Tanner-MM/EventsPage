@@ -54,15 +54,20 @@
     padding-left: 10px;
 }
 
-.star-icon { color: var(--sponsor-color); }
+.star-icon {
+    color: var(--sponsor-color);
+}
 
 .sponsor-text {
     color: var(--sponsor-color);
     font-size: small;
     margin-left: 5px;
+    display: block;
 }
 
-.flag-icon { color: var(--location-color); }
+.flag-icon {
+    color: var(--location-color);
+}
 
 .image-enlarge-icon {
     color: #d9d9d9;
@@ -73,9 +78,13 @@
     opacity: 0;
 }
 
-.event-image-container:hover .image-enlarge-icon { opacity: 1; }
+.event-image-container:hover .image-enlarge-icon {
+    opacity: 1;
+}
 
-.event-image-container:hover .event-image { opacity: 0.7; }
+.event-image-container:hover .event-image {
+    opacity: 0.7;
+}
 
 .location-text {
     color: var(--location-color);
@@ -101,7 +110,9 @@ event-card {
     padding-bottom: 40px;
 }
 
-event-card>div { grid-area: var(--area); }
+event-card>div {
+    grid-area: var(--area);
+}
 
 .center-content {
     display: flex;
@@ -126,6 +137,14 @@ event-card>div { grid-area: var(--area); }
     line-height: 24px;
 }
 
+.svg-size {
+    display: none;
+    width: 100%;
+    height: auto;
+    scale: .9;
+    transform: translateY(-5%);
+}
+
 @media screen and (max-width: 900px) {
     #event-container-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -144,6 +163,5 @@ event-card>div { grid-area: var(--area); }
     #event-container-grid {
         grid-template-columns: repeat(1, 1fr);
         max-width: 90%;
-        /* You can adjust the max-width for smaller screens */
     }
 }

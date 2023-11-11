@@ -62,7 +62,7 @@
     color: var(--sponsor-color);
     font-size: small;
     margin-left: 5px;
-    display: block;
+    display: block !important;
 }
 
 .flag-icon {

@@ -9,7 +9,6 @@ async function fetchData() {
     }
 };
 
-
 function addEventCards() {
     const gridWrapper = document.getElementById('event-container-grid');
 
@@ -21,7 +20,7 @@ function addEventCards() {
         gridWrapper.appendChild(newCard);
     }
 };
-  
+
 
 class EventCard extends HTMLElement {
     constructor() {
@@ -44,29 +43,29 @@ class EventCard extends HTMLElement {
 
         const contentString =
             `
-                <div style="--area:image" class="event-image-container" title="View Enlarged Image">
-                    <a data-fancybox="gallery" href="${event.image}" data-caption="${event.event} - ${event.track}">
-                        <img class="event-image" src="${event.image}" alt="Image Not Available">
-                        <svg class="svg-size" version="1.0" xmlns="http://www.w3.org/2000/svg" width="272.000000pt" height="263.000000pt" viewBox="0 0 272.000000 263.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,263.000000) scale(0.100000,-0.100000)" fill="#4d4d4d" stroke="none"><path d="M50 1555 l0 -1005 1310 0 1310 0 0 1005 0 1005 -1310 0 -1310 0 0 -1005z m2515 0 l0 -890 -1205 0 -1205 0 -3 880 c-1 484 0 886 3 893 3 10 250 12 1207 10 l1203 -3 0 -890z" /><path d="M824 2076 c-17 -8 -43 -26 -56 -41 -99 -107 -24 -278 121 -277 92 1 157 59 167 148 14 124 -117 220 -232 170z" /><path d="M1667 1717 c-53 -78 -132 -196 -178 -262 -45 -66 -144 -213 -222 -328 -77 -114 -143 -210 -148 -212 -4 -3 -71 72 -147 167 -336 418 -373 463 -380 466 -6 2 -159 -155 -315 -324 l-46 -50 -1 -223 c-1 -123 1 -225 3 -227 5 -6 2248 -6 2254 -1 2 3 5 28 7 56 3 61 18 36 -323 516 -114 160 -249 350 -300 423 -51 72 -96 134 -101 137 -4 2 -50 -60 -103 -138z" /></g></svg>
-                        <i class="fa-solid fa-maximize image-enlarge-icon"></i>
-                    </a>
-                </div>
-                <div style="--area:date; background-color: #3b75a3; color:#d3e0ea;" class="center-content">${days}</div>
-                <div style="--area:learn;" class="center-content">
-                    <a href="${event.url}" style="color: var(--sponsor-color);" target="_blank">Learn More</a>
-                </div>
-                <div style="--area:title; justify-content:start;" class="center-content">
-                    <h3 class="event-content-title">${event.event}</h3>
-                </div>
-                <div style="--area:location; justify-content:start;" class="location-sponsor-area">
-                    <i class="fa-solid fa-flag flag-icon"></i>
-                    <span class="location-text">${event.track} | ${event.city}, ${event.state}</span>
-                </div>
-                <div style="--area:sponsor; justify-content:start; margin-left: -4px;" class="location-sponsor-area">
-                    <br><i class="fa-solid fa-star star-icon"></i>
-                    <span class="event-sponsor-text">Sponsored by ${event.sponsor}</span>
-                </div>
-            `;
+                    <div style="--area:image" class="event-image-container" title="View Enlarged Image">
+                        <a data-fancybox="gallery" href="${event.image}" data-caption="${event.event} - ${event.track}">
+                            <img class="event-image" src="${event.image}" alt="Image Not Available">
+                            <svg class="svg-size" version="1.0" xmlns="http://www.w3.org/2000/svg" width="272.000000pt" height="263.000000pt" viewBox="0 0 272.000000 263.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,263.000000) scale(0.100000,-0.100000)" fill="#4d4d4d" stroke="none"><path d="M50 1555 l0 -1005 1310 0 1310 0 0 1005 0 1005 -1310 0 -1310 0 0 -1005z m2515 0 l0 -890 -1205 0 -1205 0 -3 880 c-1 484 0 886 3 893 3 10 250 12 1207 10 l1203 -3 0 -890z" /><path d="M824 2076 c-17 -8 -43 -26 -56 -41 -99 -107 -24 -278 121 -277 92 1 157 59 167 148 14 124 -117 220 -232 170z" /><path d="M1667 1717 c-53 -78 -132 -196 -178 -262 -45 -66 -144 -213 -222 -328 -77 -114 -143 -210 -148 -212 -4 -3 -71 72 -147 167 -336 418 -373 463 -380 466 -6 2 -159 -155 -315 -324 l-46 -50 -1 -223 c-1 -123 1 -225 3 -227 5 -6 2248 -6 2254 -1 2 3 5 28 7 56 3 61 18 36 -323 516 -114 160 -249 350 -300 423 -51 72 -96 134 -101 137 -4 2 -50 -60 -103 -138z" /></g></svg>
+                            <i class="fa-solid fa-maximize image-enlarge-icon"></i>
+                        </a>
+                    </div>
+                    <div style="--area:date; background-color: #3b75a3; color:#d3e0ea;" class="center-content">${days}</div>
+                    <div style="--area:learn;" class="center-content">
+                        <a target="_blank" href="${event.url}" style="color: var(--sponsor-color);" title="${event.url}">Learn More</a>
+                    </div>
+                    <div style="--area:title; justify-content:start;" class="center-content">
+                        <h3 class="event-content-title">${event.event}</h3>
+                    </div>
+                    <div style="--area:location; justify-content:start;" class="location-sponsor-area">
+                        <i class="fa-solid fa-flag flag-icon"></i>
+                        <span class="location-text">${event.track} | ${event.city}, ${event.state}</span>
+                    </div>
+                    <div style="--area:sponsor; justify-content:start; margin-left: -4px;" class="location-sponsor-area">
+                        <br><i class="fa-solid fa-star star-icon"></i>
+                        <span class="event-sponsor-text">Sponsored by ${event.sponsor}</span>
+                    </div>
+                `;
 
         const cleanHTML = DOMPurify.sanitize(contentString);
         this.innerHTML = cleanHTML;
@@ -135,34 +134,3 @@ async function main() {
 };
 
 main();
-
-
-
-/*
-https://images.amain.com/hobbies/event-calendar/2023-11/southwest.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/topgun.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/cardinals.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/rcpro.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/rhythm.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/sling.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/pokerrun.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/rcmt.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/tns.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/mac.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/ams.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/turkey.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/clash.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/buggy.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/crestview.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/kemaman.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/highside.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/hooters.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/carpetchamps.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/mod.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/endlesssummer.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/usindoor.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/florida.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/rally.jpg
-https://images.amain.com/hobbies/event-calendar/2023-11/uscarpet.jpg
-
-*/

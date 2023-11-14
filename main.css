@@ -58,7 +58,7 @@
     color: var(--sponsor-color);
 }
 
-.sponsor-text {
+.event-sponsor-text {
     color: var(--sponsor-color);
     font-size: small;
     margin-left: 5px;
